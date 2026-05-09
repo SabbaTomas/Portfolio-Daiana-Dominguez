@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://daiana-portfolio.vercel.app/sitemap.xml
