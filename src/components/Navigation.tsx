@@ -1,20 +1,13 @@
-import { Link, useLocation } from 'react-router-dom'
-import PaletteToggle from './PaletteToggle'
 import { NAV_ITEMS } from '../data/constants'
 import { useState } from 'react'
-import { useTheme } from '../context/ThemeContext'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 
 export default function Navigation() {
-  const location = useLocation()
   const isMobile = useMediaQuery('(max-width: 767px)')
   const [menuOpen, setMenuOpen] = useState(false)
-  const { theme, changeTheme } = useTheme()
-
-  const isHome = location.pathname === '/'
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (isHome && href.startsWith('#')) {
+    if (href.startsWith('#')) {
       e.preventDefault()
       const el = document.querySelector(href)
       if (el) {
@@ -33,18 +26,14 @@ export default function Navigation() {
       className="fixed top-0 left-0 right-0 z-50"
     >
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link
-          to="/"
+        <a
+          href="#inicio"
+          onClick={(e) => handleNavClick(e, '#inicio')}
           className="text-lg font-bold tracking-tight"
           style={{ color: 'var(--color-primary)' }}
-          onClick={() => {
-            if (isHome) {
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }
-          }}
         >
           Daiana Dominguez
-        </Link>
+        </a>
 
         {isMobile ? (
           <>
@@ -74,7 +63,7 @@ export default function Navigation() {
                 {NAV_ITEMS.map((item) => (
                   <a
                     key={item.label}
-                    href={isHome ? item.href : '/' + item.href}
+                    href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
                     className="py-2 px-3 rounded transition-colors"
                     style={{ color: 'var(--color-text-secondary)' }}
@@ -82,9 +71,6 @@ export default function Navigation() {
                     {item.label}
                   </a>
                 ))}
-                <div className="pt-2 border-t" style={{ borderColor: 'var(--color-border)' }}>
-                  <PaletteToggle currentTheme={theme} onChange={changeTheme} />
-                </div>
               </div>
             )}
           </>
@@ -93,7 +79,7 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.label}
-                href={isHome ? item.href : '/' + item.href}
+                href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
                 className="text-sm font-medium transition-colors hover:opacity-80"
                 style={{ color: 'var(--color-text-secondary)' }}
@@ -101,7 +87,6 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <PaletteToggle currentTheme={theme} onChange={changeTheme} />
           </div>
         )}
       </div>

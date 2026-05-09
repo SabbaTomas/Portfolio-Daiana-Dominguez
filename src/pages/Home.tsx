@@ -1,13 +1,26 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Hero from '../components/Hero'
 import FilmStrip from '../components/FilmStrip'
+import VideoPlayer from '../components/VideoPlayer'
 import PhotographyGallery from '../components/PhotographyGallery'
 import { getProjectsByCategory } from '../data/projects'
 import { SOCIAL_LINKS, EMAIL } from '../data/constants'
+import type { Project } from '../types'
 
 export default function Home() {
   const films = getProjectsByCategory('films')
   const documentaries = getProjectsByCategory('documentaries')
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  const handleSelect = (project: Project | null) => {
+    setSelectedProject(project)
+    if (project) {
+      setTimeout(() => {
+        document.getElementById('player')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 100)
+    }
+  }
 
   return (
     <motion.div
@@ -18,29 +31,73 @@ export default function Home() {
     >
       <Hero />
 
-      <section
-        id="films"
-        className="max-w-6xl mx-auto px-4 py-24"
-      >
-        <FilmStrip projects={films} title="Films" />
+      <section id="films" className="max-w-6xl mx-auto px-4 py-24">
+        <FilmStrip
+          projects={films}
+          title="Films"
+          selectedId={selectedProject?.id ?? null}
+          onSelect={handleSelect}
+        />
       </section>
 
       <section
         id="documentales"
         className="max-w-6xl mx-auto px-4 py-24"
-        style={{
-          borderTop: '1px solid var(--color-border)',
-        }}
+        style={{ borderTop: '1px solid var(--color-border)' }}
       >
-        <FilmStrip projects={documentaries} title="Documentales" />
+        <FilmStrip
+          projects={documentaries}
+          title="Documentales"
+          selectedId={selectedProject?.id ?? null}
+          onSelect={handleSelect}
+        />
       </section>
+
+      {selectedProject && (
+        <section
+          id="player"
+          className="max-w-4xl mx-auto px-4 pb-24"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3
+                  className="text-xl font-bold"
+                  style={{ color: 'var(--color-text)' }}
+                >
+                  {selectedProject.title}
+                </h3>
+                <p
+                  className="text-sm"
+                  style={{ color: 'var(--color-text-secondary)' }}
+                >
+                  {selectedProject.role} &middot; {selectedProject.year}
+                </p>
+              </div>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="p-2 rounded-full transition-opacity hover:opacity-70"
+                style={{ color: 'var(--color-text-secondary)' }}
+                aria-label="Cerrar video"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <VideoPlayer youtubeId={selectedProject.youtubeId} title={selectedProject.title} />
+          </motion.div>
+        </section>
+      )}
 
       <section
         id="fotografia"
         className="max-w-6xl mx-auto px-4 py-24"
-        style={{
-          borderTop: '1px solid var(--color-border)',
-        }}
+        style={{ borderTop: '1px solid var(--color-border)' }}
       >
         <motion.h2
           className="text-2xl md:text-3xl font-bold mb-8"
@@ -58,9 +115,7 @@ export default function Home() {
       <section
         id="contacto"
         className="py-20 px-4"
-        style={{
-          borderTop: '1px solid var(--color-border)',
-        }}
+        style={{ borderTop: '1px solid var(--color-border)' }}
       >
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
@@ -96,7 +151,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all hover:scale-105"
               style={{
                 backgroundColor: 'var(--color-primary)',
-                color: 'white',
+                color: 'var(--color-bg)',
               }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

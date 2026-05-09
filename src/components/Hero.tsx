@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden"
     >
       <video
         ref={videoRef}
@@ -26,15 +26,15 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background: !videoEnded
-            ? 'linear-gradient(135deg, rgba(26,26,26,0.7) 0%, rgba(26,26,26,0.3) 100%)'
-            : 'linear-gradient(135deg, var(--color-dark) 0%, var(--color-bg) 50%, var(--color-primary) 150%)',
+            ? 'linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%)'
+            : 'linear-gradient(135deg, var(--color-dark) 0%, var(--color-bg) 100%)',
         }}
       />
 
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          background: 'radial-gradient(circle at 30% 40%, var(--color-primary) 0%, transparent 60%), radial-gradient(circle at 70% 60%, var(--color-accent) 0%, transparent 50%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%)',
         }}
       />
 
@@ -62,7 +62,7 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 0.6 }}
         >
           Daiana{' '}
-          <span style={{ color: 'var(--color-primary)' }}>
+          <span style={{ color: 'var(--color-accent)' }}>
             Dominguez
           </span>
         </motion.h1>
@@ -88,7 +88,7 @@ export default function Hero() {
             className="px-8 py-3 rounded-full text-sm font-semibold transition-all hover:opacity-90 hover:scale-105"
             style={{
               backgroundColor: 'var(--color-primary)',
-              color: 'white',
+              color: 'var(--color-bg)',
             }}
           >
             Ver Films
