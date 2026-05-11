@@ -13,7 +13,7 @@ export default function Documentaries() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <ProjectGallery projects={documentaries} title="Documentales" />
+      <ProjectGallery projects={documentaries} />
     </motion.div>
   )
 }

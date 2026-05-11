@@ -12,7 +12,7 @@ export default function VideoPlayer({ youtubeId, title }: Props) {
     const iframe = iframeRef.current
     if (!iframe) return
 
-    const src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&rel=0&controls=1`
+    const src = `https://www.youtube.com/embed/${youtubeId}?rel=0&controls=1&modestbranding=1`
     iframe.src = src
   }, [youtubeId])
 

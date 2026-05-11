@@ -13,7 +13,7 @@ export default function Films() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <ProjectGallery projects={films} title="Films" />
+      <ProjectGallery projects={films} />
     </motion.div>
   )
 }

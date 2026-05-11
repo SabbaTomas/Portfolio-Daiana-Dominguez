@@ -52,16 +52,21 @@ export default function PhotographyGallery() {
     <>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {photos.map((photo, i) => (
-          <button
+          <motion.button
             key={photo.id}
             onClick={() => open(i)}
             className="group aspect-square rounded-lg overflow-hidden border transition-transform hover:scale-[1.02] text-left"
             style={{ borderColor: 'var(--color-border)' }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '100px' }}
+            transition={{ duration: 0.4, delay: i * 0.05 }}
           >
             <img
               src={photo.src}
               alt={photo.alt}
               loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               onError={(e) => {
                 const target = e.currentTarget
@@ -76,7 +81,7 @@ export default function PhotographyGallery() {
                 }
               }}
             />
-          </button>
+          </motion.button>
         ))}
       </div>
 
@@ -119,11 +124,18 @@ export default function PhotographyGallery() {
               </svg>
             </button>
 
-            <img
+            <motion.img
+              key={currentIndex}
               src={photos[currentIndex].src}
               alt={photos[currentIndex].alt}
               className="max-h-[90vh] max-w-[90vw] object-contain"
               onClick={(e) => e.stopPropagation()}
+              loading="lazy"
+              decoding="async"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
               onError={(e) => {
                 const target = e.currentTarget
                 target.alt = 'No disponible'
