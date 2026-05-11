@@ -24,17 +24,17 @@ export default function InlineProject({ project }: Props) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6 }}
-      className="rounded-2xl overflow-hidden border"
+      className="rounded-2xl overflow-hidden border hover:border-opacity-100 transition-all duration-300"
       style={{
         backgroundColor: 'var(--color-dark)',
         borderColor: 'var(--color-border)',
       }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+      <div className="flex flex-col lg:flex-row gap-0">
         {/* Video Section */}
-        <div className="aspect-video lg:aspect-auto flex items-center justify-center bg-black relative overflow-hidden group">
+        <div className="w-full lg:w-1/2 aspect-video lg:aspect-auto flex items-center justify-center bg-black relative overflow-hidden group">
           <iframe
             title={project.title}
             className="w-full h-full"
@@ -43,14 +43,15 @@ export default function InlineProject({ project }: Props) {
             allowFullScreen
             loading="lazy"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 
         {/* Content Section */}
-        <div className="p-6 lg:p-8 flex flex-col justify-between">
+        <div className="w-full lg:w-1/2 p-6 sm:p-8 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
               <span
-                className="text-xs font-mono tracking-widest uppercase px-3 py-1 rounded-full"
+                className="text-xs font-mono tracking-widest uppercase px-3 py-1 rounded-full whitespace-nowrap"
                 style={{
                   backgroundColor: project.category === 'films' ? 'rgba(160, 160, 160, 0.2)' : 'rgba(160, 160, 160, 0.1)',
                   color: 'var(--color-accent)',
@@ -68,21 +69,21 @@ export default function InlineProject({ project }: Props) {
             </div>
 
             <h3
-              className="text-2xl md:text-3xl font-bold mb-2"
+              className="text-xl sm:text-2xl md:text-3xl font-bold mb-2"
               style={{ color: 'var(--color-text)' }}
             >
               {project.title}
             </h3>
 
             <p
-              className="text-sm mb-6"
+              className="text-xs sm:text-sm mb-6"
               style={{ color: 'var(--color-text-secondary)' }}
             >
               {project.role}
             </p>
 
             <p
-              className="text-base leading-relaxed"
+              className="text-sm sm:text-base leading-relaxed"
               style={{ color: 'var(--color-text-secondary)' }}
             >
               {project.description}
@@ -91,16 +92,18 @@ export default function InlineProject({ project }: Props) {
 
           {/* Gallery Toggle */}
           {project.frames.length > 0 && (
-            <button
+            <motion.button
               onClick={() => setShowFrames(!showFrames)}
-              className="mt-8 px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-80"
+              className="mt-6 sm:mt-8 px-6 py-3 rounded-lg font-semibold text-xs sm:text-sm transition-all hover:opacity-80 w-full sm:w-auto"
               style={{
                 backgroundColor: showFrames ? 'var(--color-primary)' : 'var(--color-border)',
                 color: showFrames ? 'var(--color-bg)' : 'var(--color-text)',
               }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {showFrames ? 'Ocultar' : 'Ver'} Galería ({project.frames.length})
-            </button>
+            </motion.button>
           )}
         </div>
       </div>
@@ -116,20 +119,25 @@ export default function InlineProject({ project }: Props) {
             className="border-t"
             style={{ borderColor: 'var(--color-border)' }}
           >
-            <div className="p-6 lg:p-8">
+            <div className="p-6 sm:p-8">
               <div className="mb-6">
                 <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-black relative">
-                  <img
+                  <motion.img
+                    key={currentFrameIndex}
                     src={currentFrame}
                     alt={`${project.title} - Frame ${currentFrameIndex + 1}`}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-contain"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
                   />
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <button
+                <div className="flex items-center justify-between gap-4 flex-wrap">
+                  <motion.button
                     onClick={handlePrevFrame}
                     className="p-2 rounded-lg transition-colors"
                     style={{
@@ -137,17 +145,19 @@ export default function InlineProject({ project }: Props) {
                       color: 'var(--color-text)',
                     }}
                     aria-label="Anterior"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M15 19l-7-7 7-7" />
                     </svg>
-                  </button>
+                  </motion.button>
 
-                  <span className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                  <span className="text-xs sm:text-sm" style={{ color: 'var(--color-text-secondary)' }}>
                     {currentFrameIndex + 1} / {project.frames.length}
                   </span>
 
-                  <button
+                  <motion.button
                     onClick={handleNextFrame}
                     className="p-2 rounded-lg transition-colors"
                     style={{
@@ -155,34 +165,38 @@ export default function InlineProject({ project }: Props) {
                       color: 'var(--color-text)',
                     }}
                     aria-label="Siguiente"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M9 19l7-7-7-7" />
                     </svg>
-                  </button>
+                  </motion.button>
                 </div>
               </div>
 
               {/* Thumbnail strip */}
-              <div className="flex gap-2 overflow-x-auto pb-2">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
                 {project.frames.map((frame, idx) => (
-                  <button
+                  <motion.button
                     key={idx}
                     onClick={() => setCurrentFrameIndex(idx)}
-                    className="flex-shrink-0 w-16 h-16 rounded border transition-all hover:opacity-100"
+                    className="flex-shrink-0 w-14 sm:w-16 h-14 sm:h-16 rounded border transition-all hover:opacity-100"
                     style={{
                       borderColor: idx === currentFrameIndex ? 'var(--color-primary)' : 'var(--color-border)',
                       opacity: idx === currentFrameIndex ? 1 : 0.6,
                     }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-              <img
-                    src={frame}
-                    alt={`Thumbnail ${idx + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover rounded"
-                  />
-                  </button>
+                    <img
+                      src={frame}
+                      alt={`Thumbnail ${idx + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover rounded"
+                    />
+                  </motion.button>
                 ))}
               </div>
             </div>

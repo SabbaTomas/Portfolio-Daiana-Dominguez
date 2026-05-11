@@ -62,7 +62,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black mb-8 tracking-tight leading-none"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 tracking-tight leading-none"
           style={{ color: 'var(--color-text)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-lg md:text-xl max-w-2xl mx-auto mb-20 leading-relaxed"
           style={{ color: 'var(--color-text-secondary)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,34 +92,6 @@ export default function Hero() {
           Narrativa visual, dirección de fotografía y producción audiovisual.
           Transformando historias en experiencias cinematográficas.
         </motion.p>
-
-        <motion.div
-          className="flex flex-wrap gap-4 justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          <a
-            href="#proyectos"
-            className="px-10 py-4 rounded-full text-sm font-bold tracking-wide transition-all hover:scale-105 hover:opacity-90"
-            style={{
-              backgroundColor: 'var(--color-primary)',
-              color: 'var(--color-bg)',
-            }}
-          >
-            Ver Proyectos
-          </a>
-          <a
-            href="#contacto"
-            className="px-10 py-4 rounded-full text-sm font-bold tracking-wide transition-all hover:scale-105"
-            style={{
-              border: '1px solid var(--color-text-secondary)',
-              color: 'var(--color-text)',
-            }}
-          >
-            Contacto
-          </a>
-        </motion.div>
       </motion.div>
 
       <motion.div

@@ -5,6 +5,26 @@ import PhotographyGallery from '../components/PhotographyGallery'
 import { getProjectsByCategory } from '../data/projects'
 import { SOCIAL_LINKS, EMAIL } from '../data/constants'
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
+}
+
 export default function Home() {
   const films = getProjectsByCategory('films')
   const documentaries = getProjectsByCategory('documentaries')
@@ -23,70 +43,102 @@ export default function Home() {
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <motion.div
             className="mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
           >
             <span
-              className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4"
-              style={{ color: 'var(--color-accent)' }}
+              className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
+              style={{
+                backgroundColor: 'rgba(160, 160, 160, 0.1)',
+                color: 'var(--color-accent)',
+                border: '1px solid var(--color-border)',
+              }}
             >
               Producciones de Ficción
             </span>
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight"
               style={{ color: 'var(--color-text)' }}
             >
               Films
             </h2>
           </motion.div>
 
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
             {films.map((project) => (
               <InlineProject key={project.id} project={project} />
             ))}
-          </div>
+          </motion.div>
         </section>
       )}
 
-      {/* Documentaries Section */}
+      {/* Documentaries Section - Centered */}
       {documentaries.length > 0 && (
         <section
-          className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
+          className="relative w-full py-24"
           style={{
             backgroundColor: 'var(--color-dark)',
-            marginLeft: 'calc(-50vw + 50%)',
-            marginRight: 'calc(-50vw + 50%)',
-            paddingLeft: 'calc(50vw - 50%)',
-            paddingRight: 'calc(50vw - 50%)',
           }}
         >
-          <motion.div
-            className="mb-16 max-w-6xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <span
-              className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4"
-              style={{ color: 'var(--color-accent)' }}
-            >
-              Producciones Documentales
-            </span>
-            <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Documentales
-            </h2>
-          </motion.div>
+          {/* Decorative elements */}
+          <div
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{
+              background: 'radial-gradient(circle at 20% 50%, rgba(160, 160, 160, 0.05) 0%, transparent 50%)',
+            }}
+          />
+          <div
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{
+              background: 'radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%)',
+            }}
+          />
 
-          <div className="max-w-6xl mx-auto space-y-8">
-            {documentaries.map((project) => (
-              <InlineProject key={project.id} project={project} />
-            ))}
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="mb-16 text-center"
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              <span
+                className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
+                style={{
+                  backgroundColor: 'rgba(160, 160, 160, 0.1)',
+                  color: 'var(--color-accent)',
+                  border: '1px solid var(--color-border)',
+                }}
+              >
+                Producciones Documentales
+              </span>
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mx-auto"
+                style={{ color: 'var(--color-text)' }}
+              >
+                Documentales
+              </h2>
+            </motion.div>
+
+            <motion.div
+              className="space-y-8"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              {documentaries.map((project) => (
+                <InlineProject key={project.id} project={project} />
+              ))}
+            </motion.div>
           </div>
         </section>
       )}
@@ -95,89 +147,120 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <motion.div
           className="mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
         >
           <span
-            className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4"
-            style={{ color: 'var(--color-accent)' }}
+            className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
+            style={{
+              backgroundColor: 'rgba(160, 160, 160, 0.1)',
+              color: 'var(--color-accent)',
+              border: '1px solid var(--color-border)',
+            }}
           >
             Colección Visual
           </span>
           <h2
-            className="text-3xl md:text-4xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ color: 'var(--color-text)' }}
           >
             Fotografía
           </h2>
         </motion.div>
-        <PhotographyGallery />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <PhotographyGallery />
+        </motion.div>
       </section>
 
       {/* Contact Section */}
       <section
-        className="py-24 px-4"
+        className="py-24 px-4 relative overflow-hidden"
         style={{
-          background: 'linear-gradient(180deg, var(--color-bg) 0%, var(--color-dark) 100%)',
+          background: 'linear-gradient(180deg, var(--color-bg) 0%, var(--color-dark) 50%, var(--color-bg) 100%)',
         }}
       >
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+        {/* Decorative circles */}
+        <div
+          className="absolute top-0 right-0 w-96 h-96 opacity-5 pointer-events-none"
+          style={{
+            background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+            borderRadius: '50%',
+            transform: 'translate(30%, -30%)',
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-96 h-96 opacity-5 pointer-events-none"
+          style={{
+            background: 'radial-gradient(circle, rgba(160,160,160,0.1) 0%, transparent 70%)',
+            borderRadius: '50%',
+            transform: 'translate(-30%, 30%)',
+          }}
+        />
+
+        <motion.div
+          className="max-w-3xl mx-auto text-center relative z-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl font-black mb-6"
+            style={{ color: 'var(--color-text)' }}
+            variants={itemVariants}
           >
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-black mb-6"
-              style={{ color: 'var(--color-text)' }}
-            >
-              ¿Tenés un proyecto en mente?
-            </h2>
-            <p
-              className="text-lg mb-10"
-              style={{ color: 'var(--color-text-secondary)' }}
-            >
-              Si querés colaborar o necesitás dirección de fotografía para tu próxima producción, hablemos.
-            </p>
+            ¿Tenés un proyecto en mente?
+          </motion.h2>
+          <motion.p
+            className="text-base sm:text-lg mb-10"
+            style={{ color: 'var(--color-text-secondary)' }}
+            variants={itemVariants}
+          >
+            Si querés colaborar o necesitás dirección de fotografía para tu próxima producción, hablemos.
+          </motion.p>
 
-            <a
-              href={`mailto:${EMAIL}`}
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all hover:scale-105 hover:opacity-90"
-              style={{
-                backgroundColor: 'var(--color-primary)',
-                color: 'var(--color-bg)',
-              }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              {EMAIL}
-            </a>
-          </motion.div>
+          <motion.a
+            href={`mailto:${EMAIL}`}
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all"
+            style={{
+              backgroundColor: 'var(--color-primary)',
+              color: 'var(--color-bg)',
+            }}
+            variants={itemVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            {EMAIL}
+          </motion.a>
 
           <motion.div
-            className="flex justify-center gap-5 mt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            className="flex flex-wrap justify-center gap-4 mt-12"
+            variants={containerVariants}
           >
             {SOCIAL_LINKS.map((link) => (
-              <a
+              <motion.a
                 key={link.name}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full transition-all hover:scale-110"
+                className="p-3 rounded-full transition-all"
                 style={{
                   color: 'var(--color-text-secondary)',
                   backgroundColor: 'var(--color-border)',
                 }}
-                aria-label={link.name}
+                variants={itemVariants}
+                whileHover={{ scale: 1.15, backgroundColor: 'var(--color-primary)' }}
+                whileTap={{ scale: 0.9 }}
               >
                 {link.name === 'LinkedIn' && (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -189,10 +272,10 @@ export default function Home() {
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                   </svg>
                 )}
-              </a>
+              </motion.a>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
       </section>
     </motion.div>
   )
