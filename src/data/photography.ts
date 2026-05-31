@@ -1,10 +1,19 @@
 import type { PhotoProject } from '../types'
 
 const dir = '/images/photography'
+const thumbDir = `${dir}/miniaturas`
 
-export const photos: PhotoProject[] = Array.from({ length: 33 }, (_, i) => ({
-  id: `photo-${String(i + 1).padStart(2, '0')}`,
-  src: `${dir}/photo-${String(i + 1).padStart(2, '0')}.webp`,
+const photoIds = [
+  'photo-01', 'photo-02', 'photo-03', 'photo-04', 'photo-05',
+  'photo-06', 'photo-07', 'photo-08', 'photo-09', 'photo-10',
+  'photo-11', 'photo-12', 'photo-13', 'photo-14',
+  'photo-15', 'photo-16',
+]
+
+export const photos: PhotoProject[] = photoIds.map((id, i) => ({
+  id,
+  src: `${dir}/${id}.webp`,
+  thumb: `${thumbDir}/${id}.webp`,
   alt: `Fotografía ${i + 1}`,
 }))
 

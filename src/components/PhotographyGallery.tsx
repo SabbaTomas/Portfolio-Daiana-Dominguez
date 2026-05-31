@@ -6,6 +6,8 @@ export default function PhotographyGallery() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  const visiblePhotos = photos.slice(0, 20)
+
   const open = useCallback((index: number) => {
     setCurrentIndex(index)
     setIsOpen(true)
@@ -16,12 +18,12 @@ export default function PhotographyGallery() {
   }, [])
 
   const goNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % photos.length)
-  }, [])
+    setCurrentIndex((prev) => (prev + 1) % visiblePhotos.length)
+  }, [visiblePhotos.length])
 
   const goPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length)
-  }, [])
+    setCurrentIndex((prev) => (prev - 1 + visiblePhotos.length) % visiblePhotos.length)
+  }, [visiblePhotos.length])
 
   useEffect(() => {
     if (!isOpen) return
@@ -34,7 +36,7 @@ export default function PhotographyGallery() {
     return () => window.removeEventListener('keydown', handler)
   }, [isOpen, close, goNext, goPrev])
 
-  if (photos.length === 0) {
+  if (visiblePhotos.length === 0) {
     return (
       <div
         className="rounded-xl border-2 border-dashed p-12 text-center"
@@ -51,11 +53,11 @@ export default function PhotographyGallery() {
   return (
     <>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        {photos.map((photo, i) => (
+        {photos.slice(0, 20).map((photo, i) => (
           <motion.button
             key={photo.id}
             onClick={() => open(i)}
-            className="group aspect-square rounded-lg overflow-hidden border transition-transform hover:scale-[1.02] text-left"
+            className="group aspect-video rounded-lg overflow-hidden border transition-transform hover:scale-[1.02] text-left"
             style={{ borderColor: 'var(--color-border)' }}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -63,7 +65,7 @@ export default function PhotographyGallery() {
             transition={{ duration: 0.4, delay: i * 0.05 }}
           >
             <img
-              src={photo.src}
+              src={photo.thumb}
               alt={photo.alt}
               loading="lazy"
               decoding="async"
@@ -126,8 +128,8 @@ export default function PhotographyGallery() {
 
             <motion.img
               key={currentIndex}
-              src={photos[currentIndex].src}
-              alt={photos[currentIndex].alt}
+              src={visiblePhotos[currentIndex].src}
+              alt={visiblePhotos[currentIndex].alt}
               className="max-h-[90vh] max-w-[90vw] object-contain"
               onClick={(e) => e.stopPropagation()}
               loading="lazy"
@@ -161,7 +163,7 @@ export default function PhotographyGallery() {
               className="absolute bottom-4 text-sm"
               style={{ color: 'rgba(255,255,255,0.6)' }}
             >
-              {currentIndex + 1} / {photos.length}
+              {currentIndex + 1} / {visiblePhotos.length}
             </div>
           </motion.div>
         )}

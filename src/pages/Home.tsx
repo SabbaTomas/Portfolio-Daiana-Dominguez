@@ -38,6 +38,104 @@ export default function Home() {
     >
       <Hero />
 
+      {/* Photography Section */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <motion.div
+          className="mb-12"
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <span
+            className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
+            style={{
+              backgroundColor: 'rgba(160, 160, 160, 0.1)',
+              color: 'var(--color-accent)',
+              border: '1px solid var(--color-border)',
+            }}
+          >
+            Colección Visual
+          </span>
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold"
+            style={{ color: 'var(--color-text)' }}
+          >
+            Fotografía
+          </h2>
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <PhotographyGallery />
+        </motion.div>
+      </section>
+
+      {/* Documentaries Section - Centered */}
+      {documentaries.length > 0 && (
+        <section
+          className="relative w-full py-24"
+          style={{
+            backgroundColor: 'var(--color-dark)',
+          }}
+        >
+          {/* Decorative elements */}
+          <div
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{
+              background: 'radial-gradient(circle at 20% 50%, rgba(160, 160, 160, 0.05) 0%, transparent 50%)',
+            }}
+          />
+          <div
+            className="absolute inset-0 overflow-hidden pointer-events-none"
+            style={{
+              background: 'radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%)',
+            }}
+          />
+
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="mb-16"
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              <span
+                className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
+                style={{
+                  backgroundColor: 'rgba(160, 160, 160, 0.1)',
+                  color: 'var(--color-accent)',
+                  border: '1px solid var(--color-border)',
+                }}
+              >
+                Producciones Documentales
+              </span>
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mx-auto"
+                style={{ color: 'var(--color-text)' }}
+              >
+                Documentales
+              </h2>
+            </motion.div>
+
+            <motion.div
+              className="space-y-8"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+            >
+              {documentaries.map((project) => (
+                <InlineProject key={project.id} project={project} />
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* Films Section */}
       {films.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -79,104 +177,6 @@ export default function Home() {
           </motion.div>
         </section>
       )}
-
-      {/* Documentaries Section - Centered */}
-      {documentaries.length > 0 && (
-        <section
-          className="relative w-full py-24"
-          style={{
-            backgroundColor: 'var(--color-dark)',
-          }}
-        >
-          {/* Decorative elements */}
-          <div
-            className="absolute inset-0 overflow-hidden pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle at 20% 50%, rgba(160, 160, 160, 0.05) 0%, transparent 50%)',
-            }}
-          />
-          <div
-            className="absolute inset-0 overflow-hidden pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%)',
-            }}
-          />
-
-          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              className="mb-16 text-center"
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-            >
-              <span
-                className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
-                style={{
-                  backgroundColor: 'rgba(160, 160, 160, 0.1)',
-                  color: 'var(--color-accent)',
-                  border: '1px solid var(--color-border)',
-                }}
-              >
-                Producciones Documentales
-              </span>
-              <h2
-                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mx-auto"
-                style={{ color: 'var(--color-text)' }}
-              >
-                Documentales
-              </h2>
-            </motion.div>
-
-            <motion.div
-              className="space-y-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-            >
-              {documentaries.map((project) => (
-                <InlineProject key={project.id} project={project} />
-              ))}
-            </motion.div>
-          </div>
-        </section>
-      )}
-
-      {/* Photography Section */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <motion.div
-          className="mb-12"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          <span
-            className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
-            style={{
-              backgroundColor: 'rgba(160, 160, 160, 0.1)',
-              color: 'var(--color-accent)',
-              border: '1px solid var(--color-border)',
-            }}
-          >
-            Colección Visual
-          </span>
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold"
-            style={{ color: 'var(--color-text)' }}
-          >
-            Fotografía
-          </h2>
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          <PhotographyGallery />
-        </motion.div>
-      </section>
 
       {/* Contact Section */}
       <section

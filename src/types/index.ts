@@ -13,6 +13,7 @@ export interface Project {
 export interface PhotoProject {
   id: string
   src: string
+  thumb: string
   alt: string
   category?: string
 }

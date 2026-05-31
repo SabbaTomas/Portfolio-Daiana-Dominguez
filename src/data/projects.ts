@@ -30,6 +30,19 @@ export const projects: Project[] = [
     ),
     thumbnail: `${filmDir}/vista-al-lago/vista-al-lago-thumb.png`,
   },
+    {
+    id: 'apuntes-sobre-la-memoria',
+    title: 'Apuntes Sobre la Memoria',
+    category: 'documentaries',
+    youtubeId: '0R2QZB2m2cc',
+    description: 'Documental.',
+    year: '2023',
+    role: 'Dirección de Fotografía',
+    frames: Array.from({ length: 10 }, (_, i) =>
+      `${docDir}/apuntes-sobre-la-memoria/apuntes-sobre-la-memoria-${String(i + 1).padStart(2, '0')}.png`
+    ),
+    thumbnail: `${docDir}/apuntes-sobre-la-memoria/apuntes-sobre-la-memoria-thumb.png`,
+  },
   {
     id: 'jesus-para-algunos',
     title: 'Jesús Para Algunos',
@@ -55,20 +68,7 @@ export const projects: Project[] = [
       `${docDir}/festin/festin-${String(i + 1).padStart(2, '0')}.png`
     ),
     thumbnail: `${docDir}/festin/festin-thumb.png`,
-  },
-  {
-    id: 'apuntes-sobre-la-memoria',
-    title: 'Apuntes Sobre la Memoria',
-    category: 'documentaries',
-    youtubeId: '0R2QZB2m2cc',
-    description: 'Documental.',
-    year: '2023',
-    role: 'Dirección de Fotografía',
-    frames: Array.from({ length: 10 }, (_, i) =>
-      `${docDir}/apuntes-sobre-la-memoria/apuntes-sobre-la-memoria-${String(i + 1).padStart(2, '0')}.png`
-    ),
-    thumbnail: `${docDir}/apuntes-sobre-la-memoria/apuntes-sobre-la-memoria-thumb.png`,
-  },
+  }
 ]
 
 export function getProjectById(id: string): Project | undefined {
