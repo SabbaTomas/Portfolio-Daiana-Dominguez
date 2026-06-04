@@ -68,6 +68,32 @@ export const projects: Project[] = [
       `${docDir}/festin/festin-${String(i + 1).padStart(2, '0')}.png`
     ),
     thumbnail: `${docDir}/festin/festin-thumb.png`,
+  },
+    {
+    id: 'jaula',
+    title: 'Jaula',
+    category: 'videoClips',
+    youtubeId: 'ccOqZ_vyPmc',
+    description: 'Documental.',
+    year: '2024',
+    role: 'Dirección de Fotografía',
+    frames: Array.from({ length: 8 }, (_, i) =>
+      `${docDir}/jaula/jaula-${String(i + 1).padStart(2, '0')}.png`
+    ),
+    thumbnail: `${docDir}/jaula/jaula-thumb.png`,
+  },
+    {
+    id: 'malditoInfiel',
+    title: 'Maldito Infiel',
+    category: 'videoClips',
+    youtubeId: 'JLeX9V8MDIo',
+    description: 'Documental.',
+    year: '2024',
+    role: 'Dirección de Fotografía',
+    frames: Array.from({ length: 8 }, (_, i) =>
+      `${docDir}/malditoInfiel/malditoInfiel-${String(i + 1).padStart(2, '0')}.png`
+    ),
+    thumbnail: `${docDir}/malditoInfiel/malditoInfiel-thumb.png`,
   }
 ]
 
@@ -75,6 +101,6 @@ export function getProjectById(id: string): Project | undefined {
   return projects.find((p) => p.id === id)
 }
 
-export function getProjectsByCategory(category: 'films' | 'documentaries'): Project[] {
+export function getProjectsByCategory(category: 'films' | 'documentaries' | 'videoClips'): Project[] {
   return projects.filter((p) => p.category === category)
 }

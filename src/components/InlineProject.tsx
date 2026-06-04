@@ -38,12 +38,12 @@ export default function InlineProject({ project }: Props) {
           <iframe
             title={project.title}
             className="w-full h-full"
-            src={`https://www.youtube.com/embed/${project.youtubeId}?rel=0&controls=1&modestbranding=1`}
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            src={`https://www.youtube.com/embed/${project.youtubeId}?rel=0&controls=1&modestbranding=1&fs=1`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </div>
 
         {/* Content Section */}

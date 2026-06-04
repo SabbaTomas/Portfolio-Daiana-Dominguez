@@ -21,6 +21,7 @@ export const EMAIL = 'daidominguez1208@gmail.com'
 export const NAV_ITEMS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Films', href: '#films' },
+  { label: 'Videoclips', href: '#videoclips' },
   { label: 'Documentales', href: '#documentales' },
   { label: 'Fotografía', href: '#fotografia' },
   { label: 'Contacto', href: '#contacto' },

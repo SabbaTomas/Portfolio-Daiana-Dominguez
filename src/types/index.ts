@@ -1,7 +1,7 @@
 export interface Project {
   id: string
   title: string
-  category: 'films' | 'documentaries'
+  category: 'films' | 'documentaries' | 'videoClips'
   youtubeId: string
   description: string
   year: string
