@@ -12,8 +12,8 @@ const photoIds = [
 
 export const photos: PhotoProject[] = photoIds.map((id, i) => ({
   id,
-  src: `${dir}/${id}.webp`,
-  thumb: `${thumbDir}/${id}.webp`,
+  src: id === 'photo-11' ? `${dir}/${id}.png` : `${dir}/${id}.webp`,
+  thumb: id === 'photo-11' ? `${thumbDir}/${id}.webp` : `${thumbDir}/${id}.webp`,
   alt: `Fotografía ${i + 1}`,
 }))
 

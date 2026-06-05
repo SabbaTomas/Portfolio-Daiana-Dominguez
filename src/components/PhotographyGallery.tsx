@@ -71,7 +71,27 @@ export default function PhotographyGallery() {
               decoding="async"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               onError={(e) => {
-                const target = e.currentTarget
+                const target = e.currentTarget as HTMLImageElement
+                const current = target.currentSrc || target.src
+                const exts = ['webp', 'png', 'jpg', 'jpeg']
+                const tried = (target.dataset.triedExts || '').split(',').filter(Boolean)
+                const m = current.match(/\.([a-z0-9]+)(?:\?|$)/i)
+                const currentExt = m ? m[1].toLowerCase() : ''
+                const base = current.replace(/\.[^/.]+(\?.*)?$/, '')
+                let nextExt: string | null = null
+                const start = Math.max(0, exts.indexOf(currentExt))
+                for (let i = start + 1; i < exts.length; i++) {
+                  if (!tried.includes(exts[i])) {
+                    nextExt = exts[i]
+                    break
+                  }
+                }
+                if (nextExt) {
+                  tried.push(nextExt)
+                  target.dataset.triedExts = tried.join(',')
+                  target.src = `${base}.${nextExt}`
+                  return
+                }
                 target.style.display = 'none'
                 const parent = target.parentElement
                 if (parent) {
@@ -139,7 +159,27 @@ export default function PhotographyGallery() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.2 }}
               onError={(e) => {
-                const target = e.currentTarget
+                const target = e.currentTarget as HTMLImageElement
+                const current = target.currentSrc || target.src
+                const exts = ['webp', 'png', 'jpg', 'jpeg']
+                const tried = (target.dataset.triedExts || '').split(',').filter(Boolean)
+                const m = current.match(/\.([a-z0-9]+)(?:\?|$)/i)
+                const currentExt = m ? m[1].toLowerCase() : ''
+                const base = current.replace(/\.[^/.]+(\?.*)?$/, '')
+                let nextExt: string | null = null
+                const start = Math.max(0, exts.indexOf(currentExt))
+                for (let i = start + 1; i < exts.length; i++) {
+                  if (!tried.includes(exts[i])) {
+                    nextExt = exts[i]
+                    break
+                  }
+                }
+                if (nextExt) {
+                  tried.push(nextExt)
+                  target.dataset.triedExts = tried.join(',')
+                  target.src = `${base}.${nextExt}`
+                  return
+                }
                 target.alt = 'No disponible'
                 target.style.display = 'none'
               }}
