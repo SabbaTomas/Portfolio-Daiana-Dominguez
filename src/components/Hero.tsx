@@ -9,10 +9,10 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full min-h-[85vh] flex overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col lg:flex-row overflow-hidden"
     >
       {/* Left side (60%) - Video + Content overlay */}
-      <div className="relative w-3/5 h-[85vh] overflow-hidden bg-black">
+      <div className="relative w-full lg:w-3/5 h-[50vh] lg:h-[85vh] overflow-hidden bg-black">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -71,7 +71,7 @@ export default function Hero() {
             >
               Daiana
               <span
-                className="block"
+                className="block pb-2"
                 style={{
                   background: 'linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%)',
                   WebkitBackgroundClip: 'text',
@@ -101,7 +101,7 @@ export default function Hero() {
 
       {/* Divider line between video and image */}
       <div
-        className="absolute left-3/5 top-0 bottom-0 w-px z-20"
+        className="hidden lg:block absolute left-3/5 top-0 bottom-0 w-px z-20"
         style={{
           background: 'linear-gradient(180deg, transparent 0%, var(--color-accent) 25%, var(--color-accent) 75%, transparent 100%)',
           boxShadow: '0 0 20px rgba(160, 160, 160, 0.3)',
@@ -110,7 +110,7 @@ export default function Hero() {
 
       {/* Right side (40%) - Image background with overlay */}
       <div 
-        className="relative w-2/5 h-[85vh] overflow-hidden"
+        className="relative w-full lg:w-2/5 h-[50vh] lg:h-[85vh] overflow-hidden"
         style={{
           backgroundImage: 'url(/images/Perfil.jpg)',
           backgroundSize: 'cover',

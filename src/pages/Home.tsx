@@ -27,7 +27,7 @@ const itemVariants = {
 
 export default function Home() {
   const films = getProjectsByCategory('films')
-  const videoClips = getProjectsByCategory('videoClips')
+  const videoClips = getProjectsByCategory('Videoclips')
   const documentaries = getProjectsByCategory('documentaries')
 
   return (

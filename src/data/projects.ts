@@ -9,7 +9,7 @@ export const projects: Project[] = [
     title: 'Matar al Cuco',
     category: 'films',
     youtubeId: 'zllUsSke4xc',
-    description: 'Largometraje de ficción.',
+    description: 'Cortometraje de ficción.',
     year: '2024',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 9 }, (_, i) =>
@@ -22,7 +22,7 @@ export const projects: Project[] = [
     title: 'Vista al Lago',
     category: 'films',
     youtubeId: 't4m-nWNq-Q0',
-    description: 'Largometraje de ficción.',
+    description: 'Cortometraje de ficción.',
     year: '2023',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 8 }, (_, i) =>
@@ -72,9 +72,9 @@ export const projects: Project[] = [
     {
     id: 'jaula',
     title: 'Jaula',
-    category: 'videoClips',
+    category: 'Videoclips',
     youtubeId: 'ccOqZ_vyPmc',
-    description: 'Documental.',
+    description: 'Videoclips.',
     year: '2024',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 8 }, (_, i) =>
@@ -85,9 +85,9 @@ export const projects: Project[] = [
     {
     id: 'malditoInfiel',
     title: 'Maldito Infiel',
-    category: 'videoClips',
+    category: 'Videoclips',
     youtubeId: 'JLeX9V8MDIo',
-    description: 'Documental.',
+    description: 'Videoclips.',
     year: '2024',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 8 }, (_, i) =>
@@ -101,6 +101,6 @@ export function getProjectById(id: string): Project | undefined {
   return projects.find((p) => p.id === id)
 }
 
-export function getProjectsByCategory(category: 'films' | 'documentaries' | 'videoClips'): Project[] {
+export function getProjectsByCategory(category: 'films' | 'documentaries' | 'Videoclips'): Project[] {
   return projects.filter((p) => p.category === category)
 }
