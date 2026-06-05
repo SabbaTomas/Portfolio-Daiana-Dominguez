@@ -41,7 +41,7 @@ export default function Home() {
 
       {/* Photography Section */}
       <section id="fotografia" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <motion.div
+{/*         <motion.div
           className="mb-12"
           variants={itemVariants}
           initial="hidden"
@@ -64,7 +64,7 @@ export default function Home() {
           >
             Fotografía
           </h2>
-        </motion.div>
+        </motion.div> */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -97,7 +97,7 @@ export default function Home() {
           />
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
+    {/*         <motion.div
               className="mb-16"
               variants={itemVariants}
               initial="hidden"
@@ -120,7 +120,7 @@ export default function Home() {
               >
                 Documentales
               </h2>
-            </motion.div>
+            </motion.div> */}
 
             <motion.div
               className="space-y-8"
@@ -140,7 +140,7 @@ export default function Home() {
       {/* Video Clips Section */}
       {videoClips.length > 0 && (
         <section id="videoclips" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <motion.div
+          {/* <motion.div
             className="mb-16"
             variants={itemVariants}
             initial="hidden"
@@ -163,7 +163,7 @@ export default function Home() {
             >
               Videoclips
             </h2>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             className="space-y-8"
@@ -182,7 +182,7 @@ export default function Home() {
       {/* Films Section */}
       {films.length > 0 && (
         <section id="films" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <motion.div
+{/*           <motion.div
             className="mb-16"
             variants={itemVariants}
             initial="hidden"
@@ -205,7 +205,7 @@ export default function Home() {
             >
               Films
             </h2>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             className="space-y-8"
@@ -253,6 +253,22 @@ export default function Home() {
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
+          {/* Profile image */}
+          <motion.div
+            className="mb-8"
+            variants={itemVariants}
+          >
+            <img
+              src="/images/Perfil2.jpeg"
+              alt="Daiana Dominguez"
+              className="w-40 h-40 rounded-full object-cover mx-auto border-2"
+              style={{
+                borderColor: 'var(--color-accent)',
+                boxShadow: '0 0 40px rgba(160, 160, 160, 0.15)',
+              }}
+            />
+          </motion.div>
+
           <motion.h2
             className="text-3xl sm:text-4xl md:text-5xl font-black mb-6"
             style={{ color: 'var(--color-text)' }}
