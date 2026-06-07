@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import Hero from '../components/Hero'
 import InlineProject from '../components/InlineProject'
 import PhotographyGallery from '../components/PhotographyGallery'
+import AnitaPapafrita from '../components/AnitaPapafrita'
 import { getProjectsByCategory } from '../data/projects'
 import { SOCIAL_LINKS, EMAIL } from '../data/constants'
 
@@ -27,7 +28,7 @@ const itemVariants = {
 
 export default function Home() {
   const films = getProjectsByCategory('films')
-  const videoClips = getProjectsByCategory('videoClips')
+  const videoClips = getProjectsByCategory('Videoclips')
   const documentaries = getProjectsByCategory('documentaries')
 
   return (
@@ -39,9 +40,12 @@ export default function Home() {
     >
       <Hero />
 
+      {/* AnitaPapafrita Section */}
+      <AnitaPapafrita />
+
       {/* Photography Section */}
-      <section id="fotografia" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-{/*         <motion.div
+      <section id="fotografia" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:pt-12">
+        <motion.div
           className="mb-12"
           variants={itemVariants}
           initial="hidden"
@@ -64,7 +68,7 @@ export default function Home() {
           >
             Fotografía
           </h2>
-        </motion.div> */}
+        </motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -74,30 +78,27 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Documentaries Section - Centered */}
-      {documentaries.length > 0 && (
-        <section id="documentales"
-          className="relative w-full py-24"
-          style={{
-            backgroundColor: 'var(--color-dark)',
-          }}
-        >
-          {/* Decorative elements */}
-          <div
-            className="absolute inset-0 overflow-hidden pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle at 20% 50%, rgba(160, 160, 160, 0.05) 0%, transparent 50%)',
-            }}
-          />
-          <div
-            className="absolute inset-0 overflow-hidden pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%)',
-            }}
-          />
+       {/* Documentaries Section - Centered */}
+       {documentaries.length > 0 && (
+         <section id="documentales"
+           className="relative w-full py-16"
+         >
+           {/* Decorative elements */}
+           <div
+             className="absolute inset-0 overflow-hidden pointer-events-none"
+             style={{
+               background: 'radial-gradient(circle at 20% 50%, rgba(160, 160, 160, 0.05) 0%, transparent 50%)',
+             }}
+           />
+           <div
+             className="absolute inset-0 overflow-hidden pointer-events-none"
+             style={{
+               background: 'radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%)',
+             }}
+           />
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/*         <motion.div
+            <motion.div
               className="mb-16"
               variants={itemVariants}
               initial="hidden"
@@ -120,7 +121,7 @@ export default function Home() {
               >
                 Documentales
               </h2>
-            </motion.div> */}
+            </motion.div>
 
             <motion.div
               className="space-y-8"
@@ -137,10 +138,13 @@ export default function Home() {
         </section>
       )}
 
-      {/* Video Clips Section */}
-      {videoClips.length > 0 && (
-        <section id="videoclips" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          {/* <motion.div
+       {/* Video Clips Section */}
+       {videoClips.length > 0 && (
+         <section
+           id="videoclips"
+           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative w-full"
+         >
+          <motion.div
             className="mb-16"
             variants={itemVariants}
             initial="hidden"
@@ -163,7 +167,7 @@ export default function Home() {
             >
               Videoclips
             </h2>
-          </motion.div> */}
+          </motion.div>
 
           <motion.div
             className="space-y-8"
@@ -179,10 +183,13 @@ export default function Home() {
         </section>
       )}
       
-      {/* Films Section */}
-      {films.length > 0 && (
-        <section id="films" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-{/*           <motion.div
+       {/* Films Section */}
+       {films.length > 0 && (
+         <section
+           id="films"
+           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative w-full"
+         >
+          <motion.div
             className="mb-16"
             variants={itemVariants}
             initial="hidden"
@@ -205,7 +212,7 @@ export default function Home() {
             >
               Films
             </h2>
-          </motion.div> */}
+          </motion.div>
 
           <motion.div
             className="space-y-8"
@@ -221,13 +228,10 @@ export default function Home() {
         </section>
       )}
 
-      {/* Contact Section */}
-      <section
-        className="py-24 px-4 relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(180deg, var(--color-bg) 0%, var(--color-dark) 50%, var(--color-bg) 100%)',
-        }}
-      >
+       {/* Contact Section */}
+       <section
+         className="py-24 px-4 relative overflow-hidden"
+       >
         {/* Decorative circles */}
         <div
           className="absolute top-0 right-0 w-96 h-96 opacity-5 pointer-events-none"

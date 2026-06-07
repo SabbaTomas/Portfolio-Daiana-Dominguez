@@ -1,7 +1,7 @@
 export interface Project {
   id: string
   title: string
-  category: 'films' | 'documentaries' | 'videoClips'
+  category: 'films' | 'documentaries' | 'Videoclips'
   youtubeId: string
   description: string
   year: string
@@ -18,11 +18,6 @@ export interface PhotoProject {
   category?: string
 }
 
-export interface Palette {
-  id: string
-  name: string
-  colors: Record<string, string>
-}
 
 export interface SocialLink {
   name: string
@@ -30,4 +25,4 @@ export interface SocialLink {
   icon: string
 }
 
-export type ThemeId = 'scorsese' | 'wes-anderson' | 'matrix' | 'film-noir'
+
