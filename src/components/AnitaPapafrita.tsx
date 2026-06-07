@@ -1,18 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { anitaPapafrita } from '../data/anitapapafrita'
 
 export default function AnitaPapafrita() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [visibleImages, setVisibleImages] = useState<Set<number>>(new Set())
   const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  })
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.2], [100, 0])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
