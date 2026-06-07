@@ -43,10 +43,7 @@ export default function AnitaPapafrita() {
     <section
       ref={containerRef}
       id="anitapapafrita"
-      className="relative w-full py-32 lg:py-48 px-4 sm:px-6 lg:px-8"
-      style={{
-        background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(40, 40, 40, 0.3) 100%)',
-      }}
+      className="relative w-full px-4 sm:px-6 lg:px-8"
     >
       {/* Decorative elements */}
       <div
@@ -62,9 +59,9 @@ export default function AnitaPapafrita() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 py-8 lg:py-12">
         {/* Header section with staggered reveals */}
-        <motion.div style={{ opacity, y }} className="mb-16 lg:mb-24">
+        <div className="mb-16 lg:mb-24">
           {/* Status badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -103,7 +100,7 @@ export default function AnitaPapafrita() {
               style={{ backgroundColor: 'var(--color-primary)' }}
             />
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Main content grid: text + images */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
