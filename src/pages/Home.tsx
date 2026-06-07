@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import Hero from '../components/Hero'
 import InlineProject from '../components/InlineProject'
 import PhotographyGallery from '../components/PhotographyGallery'
+import AnitaPapafrita from '../components/AnitaPapafrita'
 import { getProjectsByCategory } from '../data/projects'
 import { SOCIAL_LINKS, EMAIL } from '../data/constants'
 
@@ -38,6 +39,9 @@ export default function Home() {
       transition={{ duration: 0.3 }}
     >
       <Hero />
+
+      {/* AnitaPapafrita Section */}
+      <AnitaPapafrita />
 
       {/* Photography Section */}
       <section id="fotografia" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:pt-12">

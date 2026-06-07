@@ -23,6 +23,7 @@ export const NAV_ITEMS = [
   { label: 'Films', href: '#films' },
   { label: 'Videoclips', href: '#videoclips' },
   { label: 'Documentales', href: '#documentales' },
+  { label: 'Anita Papafrita', href: '#anitapapafrita' },
   { label: 'Fotografía', href: '#fotografia' },
   { label: 'Contacto', href: '#contacto' },
 ] as const
