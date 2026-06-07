@@ -50,7 +50,7 @@ export default function Hero() {
               transition={{ delay: 0.1, duration: 0.8 }}
             >
               <span
-                className="inline-block text-xs font-mono tracking-[0.4em] uppercase px-4 py-2 rounded-full"
+                className="inline-block text-sm font-mono tracking-[0.4em] uppercase px-4 py-2 rounded-full"
                 style={{
                   color: 'var(--color-text)',
                   border: '1px solid var(--color-border)',
@@ -69,31 +69,30 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Daiana
-              <span
-                className="block pb-2"
-                style={{
-                  background: 'linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                Dominguez
-              </span>
+              Daiana <br />
+              
+              Dominguez
+               
             </motion.h1>
 
             {/* Description */}
             <motion.p
-              className="text-base md:text-lg leading-relaxed max-w-2xl rounded-full"
-              style={{ backgroundColor: 'rgba(255,255,255,0.09)',
-                color: 'var(--color-text-secondary)' }}
+              className="text-base md:text-lg leading-relaxed max-w-xl"
+              style={{ color: 'var(--color-text-secondary)' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
+              <span
+                className="inline-block text-xs tracking-[0.2em] px-6 py-3 rounded-full"
+                style={{
+                  color: 'var(--color-text)',
+                  border: '1px solid var(--color-border)',
+                  backgroundColor: 'rgba(255,255,255,0.05)',
+                  }}>
               Narrativa visual, dirección de fotografía y producción audiovisual.
               Transformando historias en experiencias cinematográficas.
+              </span>
             </motion.p>
           </div>
         </motion.div>

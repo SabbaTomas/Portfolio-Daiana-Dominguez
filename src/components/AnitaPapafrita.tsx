@@ -89,9 +89,15 @@ export default function AnitaPapafrita() {
               {anitaPapafrita.title}
             </h2>
             <div
-              className="h-1 w-24 rounded-full"
+              className="h-1 w-24 rounded-full mb-4"
               style={{ backgroundColor: 'var(--color-primary)' }}
             />
+            <p
+              className="text-xs tracking-widest uppercase"
+              style={{ color: 'var(--color-accent)' }}
+            >
+              Guion y dirección
+            </p>
           </motion.div>
         </div>
 
