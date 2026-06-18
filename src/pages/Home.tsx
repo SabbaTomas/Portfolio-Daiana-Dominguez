@@ -159,7 +159,7 @@ export default function Home() {
                 border: '1px solid var(--color-border)',
               }}
             >
-              Producciones Cortas
+              Producción Audiovisual
             </span>
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight"
