@@ -6,8 +6,32 @@ export interface Project {
   description: string
   year: string
   role: string
+  selections?: string[]
   frames: string[]
   thumbnail: string
+}
+
+export type SecondaryRoleMedia =
+  | { type: 'youtube'; youtubeId: string }
+  | { type: 'video'; src: string }
+  | {
+      type: 'instagram'
+      url: string
+      cover: string
+      handle?: string
+      alt?: string
+    }
+  | { type: 'image'; src: string }
+
+export interface SecondaryRoleItem {
+  id: string
+  role?: string
+  project?: string
+  production?: string
+  year?: string
+  selections?: string[]
+  task?: string
+  media: SecondaryRoleMedia
 }
 
 export interface PhotoProject {

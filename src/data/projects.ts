@@ -5,12 +5,24 @@ const docDir = '/images/documentaries'
 
 export const projects: Project[] = [
   {
+    id: 'ruido-blanco',
+    title: 'Ruido Blanco',
+    category: 'films',
+    youtubeId: 'x744U6yNObA',
+    description: 'Cortometraje de ficción.',
+    year: '2024',
+    role: 'Dirección de Fotografía',
+    selections: ['Festival Buenos Aires Rojo Sangre 2026'],
+    frames: [],
+    thumbnail: 'https://i.ytimg.com/vi/x744U6yNObA/maxresdefault.jpg',
+  },
+  {
     id: 'matar-al-cuco',
     title: 'Matar al Cuco',
     category: 'films',
     youtubeId: 'zllUsSke4xc',
     description: 'Cortometraje de ficción.',
-    year: '2024',
+    year: '2023',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 9 }, (_, i) =>
       `${filmDir}/matar-al-cuco/matar-al-cuco-${String(i + 1).padStart(2, '0')}.png`
@@ -23,7 +35,7 @@ export const projects: Project[] = [
     category: 'films',
     youtubeId: 't4m-nWNq-Q0',
     description: 'Cortometraje de ficción.',
-    year: '2023',
+    year: '2021',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 8 }, (_, i) =>
       `${filmDir}/vista-al-lago/vista-al-lago-${String(i + 1).padStart(2, '0')}.png`
@@ -36,8 +48,9 @@ export const projects: Project[] = [
     category: 'documentaries',
     youtubeId: '0R2QZB2m2cc',
     description: 'Documental.',
-    year: '2023',
+    year: '2024',
     role: 'Dirección de Fotografía',
+    selections: ['Cinéma de Femmes 2026'],
     frames: Array.from({ length: 10 }, (_, i) =>
       `${docDir}/apuntes-sobre-la-memoria/apuntes-sobre-la-memoria-${String(i + 1).padStart(2, '0')}.png`
     ),
@@ -49,7 +62,7 @@ export const projects: Project[] = [
     category: 'documentaries',
     youtubeId: '7Y0VaCQBmvQ',
     description: 'Documental.',
-    year: '2024',
+    year: '2022',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 8 }, (_, i) =>
       `${docDir}/jesus-para-algunos/jesus-para-algunos-${String(i + 1).padStart(2, '0')}.png`
@@ -62,7 +75,7 @@ export const projects: Project[] = [
     category: 'documentaries',
     youtubeId: 'ggRWaFmsgkQ',
     description: 'Documental.',
-    year: '2024',
+    year: '2020',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 8 }, (_, i) =>
       `${docDir}/festin/festin-${String(i + 1).padStart(2, '0')}.png`
@@ -88,7 +101,7 @@ export const projects: Project[] = [
     category: 'Videoclips',
     youtubeId: 'JLeX9V8MDIo',
     description: 'Videoclips.',
-    year: '2024',
+    year: '2021',
     role: 'Dirección de Fotografía',
     frames: Array.from({ length: 8 }, (_, i) =>
       `${docDir}/malditoInfiel/malditoInfiel-${String(i + 1).padStart(2, '0')}.png`
