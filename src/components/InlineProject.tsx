@@ -44,7 +44,7 @@ export default function InlineProject({ project }: Props) {
                   border: '1px solid var(--color-border)',
                 }}
               >
-                {project.category === 'films' ? 'Ficción' : 'Documental'}
+                {project.category === 'films' ? 'Ficción' : project.category === 'Videoclips' ? 'Videoclip' : 'Documental'}
               </span>
               <span
                 className="text-xs font-mono"
@@ -74,6 +74,26 @@ export default function InlineProject({ project }: Props) {
             >
               {project.description}
             </p>
+
+            {project.selections && project.selections.length > 0 && (
+              <div
+                className="mt-5 pl-4 flex flex-wrap items-center gap-x-3 gap-y-1"
+                style={{ borderLeft: '2px solid var(--color-accent)' }}
+              >
+                <span
+                  className="text-[10px] font-mono tracking-[0.3em] uppercase"
+                  style={{ color: 'var(--color-accent)' }}
+                >
+                  Selección oficial
+                </span>
+                <span
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--color-text)' }}
+                >
+                  {project.selections.join(' · ')}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>

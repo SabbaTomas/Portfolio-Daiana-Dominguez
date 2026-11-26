@@ -44,6 +44,18 @@ export default function ProjectCard({ project, index }: Props) {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {project.selections && project.selections.length > 0 && (
+            <span
+              className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-[0.2em] uppercase backdrop-blur-sm"
+              style={{
+                backgroundColor: 'rgba(0, 0, 0, 0.55)',
+                color: 'var(--color-text)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+              }}
+            >
+              Selección oficial
+            </span>
+          )}
           <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-white">
               <polygon points="5 3 19 12 5 21 5 3" fill="white" />
@@ -56,7 +68,7 @@ export default function ProjectCard({ project, index }: Props) {
               className="text-xs font-mono tracking-wider uppercase"
               style={{ color: 'var(--color-accent)' }}
             >
-              {project.category === 'films' ? 'Film' : 'Documental'}
+              {project.category === 'films' ? 'Film' : project.category === 'Videoclips' ? 'Videoclip' : 'Documental'}
             </span>
             <span className="text-xs font-mono" style={{ color: 'var(--color-text-secondary)' }}>
               {project.year}

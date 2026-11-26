@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import InlineProject from '../components/InlineProject'
 import PhotographyGallery from '../components/PhotographyGallery'
 import AnitaPapafrita from '../components/AnitaPapafrita'
+import SecondaryRoles from '../components/SecondaryRoles'
 import { getProjectsByCategory } from '../data/projects'
 import { SOCIAL_LINKS, EMAIL } from '../data/constants'
 
@@ -44,7 +45,7 @@ export default function Home() {
       <AnitaPapafrita />
 
       {/* Photography Section */}
-      <section id="fotografia" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:pt-12">
+      <section id="fotografia" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-12">
         <motion.div
           className="mb-12"
           variants={itemVariants}
@@ -81,7 +82,7 @@ export default function Home() {
        {/* Documentaries Section - Centered */}
        {documentaries.length > 0 && (
          <section id="documentales"
-           className="relative w-full py-16"
+           className="relative w-full pt-16 pb-12"
          >
            {/* Decorative elements */}
            <div
@@ -138,56 +139,11 @@ export default function Home() {
         </section>
       )}
 
-       {/* Video Clips Section */}
-       {videoClips.length > 0 && (
-         <section
-           id="videoclips"
-           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative w-full"
-         >
-          <motion.div
-            className="mb-16"
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-          >
-            <span
-              className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
-              style={{
-                backgroundColor: 'rgba(160, 160, 160, 0.1)',
-                color: 'var(--color-accent)',
-                border: '1px solid var(--color-border)',
-              }}
-            >
-              Producción Audiovisual
-            </span>
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight"
-              style={{ color: 'var(--color-text)' }}
-            >
-              Videoclips
-            </h2>
-          </motion.div>
-
-          <motion.div
-            className="space-y-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-          >
-            {videoClips.map((project) => (
-              <InlineProject key={project.id} project={project} />
-            ))}
-          </motion.div>
-        </section>
-      )}
-      
        {/* Films Section */}
        {films.length > 0 && (
          <section
            id="films"
-           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative w-full"
+           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative w-full"
          >
           <motion.div
             className="mb-16"
@@ -227,6 +183,54 @@ export default function Home() {
           </motion.div>
         </section>
       )}
+
+       {/* Video Clips Section */}
+       {videoClips.length > 0 && (
+         <section
+           id="videoclips"
+           className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 relative w-full"
+         >
+          <motion.div
+            className="mb-16"
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
+            <span
+              className="inline-block text-xs font-mono tracking-[0.3em] uppercase mb-4 px-3 py-1 rounded-full"
+              style={{
+                backgroundColor: 'rgba(160, 160, 160, 0.1)',
+                color: 'var(--color-accent)',
+                border: '1px solid var(--color-border)',
+              }}
+            >
+              Producción Audiovisual
+            </span>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight"
+              style={{ color: 'var(--color-text)' }}
+            >
+              Videoclips
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
+            {videoClips.map((project) => (
+              <InlineProject key={project.id} project={project} />
+            ))}
+          </motion.div>
+        </section>
+      )}
+
+       {/* Secondary Roles Section */}
+       <SecondaryRoles />
 
        {/* Contact Section */}
        <section

@@ -1,11 +1,7 @@
 import { motion } from 'framer-motion'
-import { useRef, useState } from 'react'
 import { SOCIAL_LINKS } from '../data/constants'
 
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [videoEnded, setVideoEnded] = useState(false)
-
   return (
     <section
       id="inicio"
@@ -14,24 +10,19 @@ export default function Hero() {
       {/* Left side (60%) - Video + Content overlay */}
       <div className="relative w-full lg:w-3/5 h-[50vh] lg:h-[85vh] overflow-hidden bg-black">
         <video
-          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           src="/hero.mp4"
           muted
           playsInline
           loop
           autoPlay
-          onEnded={() => setVideoEnded(true)}
-          onError={() => setVideoEnded(true)}
         />
         
         {/* Video overlay */}
         <div
           className="absolute inset-0"
           style={{
-            background: !videoEnded
-              ? 'linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.3) 100%)'
-              : 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.4) 100%)',
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.3) 100%)',
           }}
         />
 
